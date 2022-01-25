@@ -25,6 +25,7 @@ function validatePasswordLogin(req, res, next) {
   if (password.length < 6) {
     return res.status(400).json({ message: '"password" shorter than 6 characters' });
   }
+  next();
 }
 
 module.exports = {
