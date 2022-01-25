@@ -14,8 +14,8 @@ const Login = () => {
       <h1>Login</h1>
       <button
         type="submit"
-        data-testid={ datatestids[4] }
-        onClick={ routeChange }
+        data-testid={datatestids[4]}
+        onClick={routeChange}
       >
         Ainda não tenho conta
       </button>
