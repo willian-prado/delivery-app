@@ -2,8 +2,8 @@ const usersServices = require('../service/usersService');
 
 const createUser = async (req, res) => {
   try {
-    const { displayName, email, password, image } = req.body;
-    const creatNewUser = await usersServices.creatNewUser({ displayName, email, password, image });
+    const { name, email, password } = req.body;
+    const creatNewUser = await usersServices.creatNewUser({ name, email, password });
     return res.status(201).json(creatNewUser);
   } catch (error) {
     if (error.message === 'User already registered') {

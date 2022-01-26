@@ -13,12 +13,12 @@ const checkUserExistence = async ({ email, password }) => User.findOne({
 });
 
 const createNewLogin = async ({ email, password }) => {
-  const checkUser = await checkUserExistence({ email, password });
+  const newPassword = md5(password);
+  const checkUser = await checkUserExistence({ email, password: newPassword });
   if (checkUser === null) {
     const message = 'Invalid fields';
     throw new Error(message);
   }
-
   const id = { id: checkUser.id };
   const token = jwt.sign(id, secretPassword, jwtConfig);
   return { token };
