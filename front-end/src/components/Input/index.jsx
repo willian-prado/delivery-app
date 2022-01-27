@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Input = ({ testId, value, handleChange, type, placeholder }) => (
+const Input = ({ dataTestId, value, handleChange, type, placeholder }) => (
   <input
-    dataTestId={ testId }
+    data-testid={ dataTestId }
     value={ value }
     onChange={ handleChange }
     type={ type }
@@ -12,7 +12,7 @@ const Input = ({ testId, value, handleChange, type, placeholder }) => (
 );
 
 Input.propTypes = {
-  testId: PropTypes.string.isRequired,
+  dataTestId: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
   handleChange: PropTypes.func.isRequired,
   type: PropTypes.string.isRequired,
