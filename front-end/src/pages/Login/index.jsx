@@ -26,12 +26,12 @@ const Login = () => {
         onSubmit={ async (event) => {
           event.preventDefault();
           const URL = 'http://localhost:3001/login';
-          const user = { email, password };
+          const newUser = { email, password };
 
           try {
-            const role = await axiosPost(URL, user);
+            const user = await axiosPost(URL, newUser);
 
-            navigate(routes[role]);
+            navigate(routes[user.role]);
           } catch (err) {
             setUserNotFound(true);
           }
