@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
     delivery_number: { type: DataTypes.STRING(50), allowNull: false },
     sale_date: { type: DataTypes.DATE, allowNull: false },
     status: { type: DataTypes.STRING(50), allowNull: false },
-  }, { createdAt: "sale_date", updatedAt: false });
+  }, { createdAt: "sale_date", updatedAt: false, tableName: 'sales' });
 
   Sale.associate = function (models) {
     models.Sale.belongsTo(models.User,

@@ -9,7 +9,7 @@ const createUser = async (req, res) => {
     if (error.message === 'User already registered') {
       return res.status(409).json({ message: error.message });
     }
-    return res.status(400).json({ message: error.message });
+    return res.status(404).json({ message: error.message });
   }
 };
 
