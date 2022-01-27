@@ -4,7 +4,6 @@ const cors = require('cors');
 const loginRouter = require('./routes/loginRouter');
 const usersRouter = require('./routes/usersRouter');
 const productRouter = require('./routes/productRouter');
-require('dotenv').config();
 
 const corsOptions = {
   origin: 'http://localhost:3000',
