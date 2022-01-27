@@ -3,6 +3,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import dataTestIds from '../../dataTestIds';
 import verifyRegister from '../../helpers/verifyRegister';
+import addUserToLocalStorage from '../../helpers/addUserToLocalStorage';
 
 const Register = () => {
   const navigate = useNavigate();
@@ -29,10 +30,12 @@ const Register = () => {
     try {
       const URL = 'http://localhost:3001/user';
       const response = await axios.post(URL, registerForm);
-      console.log(response);
+      const { token } = response.data;
+      addUserToLocalStorage(registerForm, token);
       navigate('/customer/products');
     } catch (error) {
-      setWarning(error.response.data.message);
+      const { message } = error.response.data;
+      setWarning(message);
       const timeout = 5000;
       setTimeout(() => {
         setWarning('');
