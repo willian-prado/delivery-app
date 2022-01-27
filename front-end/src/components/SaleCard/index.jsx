@@ -1,21 +1,33 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const SaleCard = ({ id, status, saleDate, totalPrice, deliveryAddress }) => (
-  <li>
-    <div>{`Pedido ${id}`}</div>
-    <div>{status}</div>
-    <div>{saleDate}</div>
-    <div>{`R$ ${totalPrice}`}</div>
-    {deliveryAddress && <div>{deliveryAddress}</div>}
-  </li>
-);
+const SaleCard = ({ order }) => {
+  const { id, status, saleDate, totalPrice, deliveryAddress } = order;
+
+  return (
+    <li>
+      <div data-testid={ id.dataTestId }>{`Pedido ${id.text}`}</div>
+      <div data-testid={ status.dataTestId }>{status.text}</div>
+      <div data-testid={ saleDate.dataTestId }>{saleDate.text}</div>
+      <div data-testid={ totalPrice.dataTestId }>{`R$ ${totalPrice.text}`}</div>
+      {deliveryAddress && (
+        <div data-testid={ deliveryAddress.dataTestId }>{deliveryAddress.text}</div>
+      )}
+    </li>
+  );
+};
+
+const orderItemPropTypes = {
+  dataTestId: PropTypes.string, text: PropTypes.string,
+};
 
 SaleCard.propTypes = {
-  id: PropTypes.number.isRequired,
-  status: PropTypes.string.isRequired,
-  saleDate: PropTypes.string.isRequired,
-  totalPrice: PropTypes.string.isRequired,
-  deliveryAddress: PropTypes.string.isRequired,
+  order: PropTypes.shape({
+    id: PropTypes.shape(orderItemPropTypes),
+    status: PropTypes.shape(orderItemPropTypes),
+    saleDate: PropTypes.shape(orderItemPropTypes),
+    totalPrice: PropTypes.shape(orderItemPropTypes),
+    deliveryAddress: PropTypes.shape(orderItemPropTypes),
+  }).isRequired,
 };
 export default SaleCard;
