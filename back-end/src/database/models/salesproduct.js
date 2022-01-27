@@ -1,7 +1,11 @@
-const SalesProduct = (sequelize, DataTypes) => {
-  module.exports = sequelize.define("SalesProduct", {
+module.exports = (sequelize, DataTypes) => {
+  const SalesProduct = sequelize.define("SalesProduct", {
     quantity: { type: DataTypes.INTEGER, allowNull: false },
-  }, { timestamps: false });
+  }, 
+  { 
+    tableName: 'salesModel',
+    timestamps: false 
+  });
 
   SalesProduct.associate = (models) => {
     models.Product.belongsToMany(models.Sale,
