@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Button = ({ children, dataTestId, submit, disabled }) => (
+const Button = ({ children, dataTestId, handleClick, submit, disabled }) => (
   <button
     data-testid={ dataTestId }
+    onClick={ handleClick }
     type={ submit ? 'submit' : 'button' }
     disabled={ disabled }
   >
@@ -14,6 +15,7 @@ const Button = ({ children, dataTestId, submit, disabled }) => (
 Button.propTypes = {
   children: PropTypes.node.isRequired,
   dataTestId: PropTypes.string.isRequired,
+  handleClick: PropTypes.func.isRequired,
   submit: PropTypes.bool.isRequired,
   disabled: PropTypes.bool.isRequired,
 };

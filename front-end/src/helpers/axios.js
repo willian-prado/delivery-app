@@ -11,7 +11,7 @@ const axiosPost = async (URL, data) => {
 
     localStorage.setItem('token', token);
 
-    // console.log(decoded.role);
+    console.log(decoded.role);
     return decoded.role;
   } catch (err) {
     console.log(err);

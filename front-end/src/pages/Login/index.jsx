@@ -59,7 +59,7 @@ const Login = () => {
         </Button>
         <Button
           dataTestId={ dataTestIds[4] }
-          onClick={ () => navigate('/register') }
+          handleClick={ () => navigate('/register') }
         >
           Ainda não tenho conta
         </Button>
@@ -71,4 +71,5 @@ const Login = () => {
     </main>
   );
 };
+
 export default Login;
