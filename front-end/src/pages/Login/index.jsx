@@ -23,7 +23,7 @@ const Login = () => {
     <main>
       <h1>Login</h1>
       <form
-        onSubmit={async (event) => {
+        onSubmit={ async (event) => {
           event.preventDefault();
           const URL = 'http://localhost:3001/login';
           const user = { email, password };
@@ -35,7 +35,7 @@ const Login = () => {
           } catch (err) {
             setUserNotFound(true);
           }
-        }}
+        } }
       >
         <Input
           dataTestId={ dataTestIds[1] }
@@ -53,7 +53,7 @@ const Login = () => {
         <Button
           dataTestId={ dataTestIds[3] }
           submit
-          disabled={ isButtonDisabled()}
+          disabled={ isButtonDisabled() }
         >
           Login
         </Button>

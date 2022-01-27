@@ -46,7 +46,7 @@ const Register = () => {
   return (
     <div>
       <h1>Cadastro</h1>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={ handleSubmit }>
         <input
           type="text"
           data-testid={ dataTestIds[6] }

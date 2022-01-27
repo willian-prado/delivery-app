@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const Input = ({ dataTestId, value, handleChange, type, placeholder }) => (
   <input
     data-testid={ dataTestId }
-    value={ value}
+    value={ value }
     onChange={ handleChange }
     type={ type }
     placeholder={ placeholder }
