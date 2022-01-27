@@ -20,8 +20,10 @@ const createNewLogin = async ({ email, password }) => {
     const message = 'Invalid fields';
     throw new Error(message);
   }
-  const id = { id: checkUser.id };
-  const token = jwt.sign(id, secretPassword, jwtConfig);
+  const user = { 
+    id: checkUser.id, role: checkUser.role, name: checkUser.name, email: checkUser.email,
+  };
+  const token = jwt.sign(user, secretPassword, jwtConfig);
   return { token };
 };
 
