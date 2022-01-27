@@ -8,7 +8,7 @@ const Button = ({ children, dataTestId, handleClick, submit, disabled }) => (
     type={ submit ? 'submit' : 'button' }
     disabled={ disabled }
   >
-    {children}
+    { children }
   </button>
 );
 

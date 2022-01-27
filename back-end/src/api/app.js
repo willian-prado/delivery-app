@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const loginRouter = require('./routes/loginRouter');
 const usersRouter = require('./routes/usersRouter');
-require('dotenv').config();
+const productRouter = require('./routes/productRouter');
 
 const corsOptions = {
   origin: 'http://localhost:3000',
@@ -17,6 +17,9 @@ app.use(cors(corsOptions));
 
 app.use('/login', loginRouter);
 app.use('/user', usersRouter);
+app.use('/products', productRouter);
+
+app.use(express.static('public'));
 
 app.get('/coffee', (_req, res) => res.status(418).end());
 

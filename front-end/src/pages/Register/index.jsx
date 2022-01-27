@@ -76,7 +76,7 @@ const Register = () => {
           CADASTRAR
         </button>
       </form>
-      { warning && <div data-testid={ dataTestIds[10] }>{warning}</div> }
+      { warning && <div data-testid={ dataTestIds[10] }>{ warning }</div> }
     </div>
   );
 };
