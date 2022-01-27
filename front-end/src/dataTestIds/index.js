@@ -1,4 +1,4 @@
-const datatestids = {
+const dataTestIds = {
   1: 'common_login__input-email',
   2: 'common_login__input-password',
   3: 'common_login__button-login',
@@ -72,4 +72,4 @@ const datatestids = {
   78: 'admin_manage__input-password',
 };
 
-export default datatestids;
+export default dataTestIds;

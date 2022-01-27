@@ -1,5 +1,6 @@
 import React from 'react';
-import datatestids from '../../dataTestIds';
+import dataTestIds from '../../dataTestIds';
+import verifyRegister from '../../helpers/verifyRegister';
 
 const Register = () => {
   const [registerForm, setRegisterForm] = React.useState({
@@ -13,34 +14,40 @@ const Register = () => {
     setRegisterForm({ ...registerForm, [name]: value });
   };
 
+  const disableButton = () => {
+    const { name, email, password } = registerForm;
+    return (!verifyRegister(name, email, password));
+  };
+
   return (
     <div>
       <h1>Cadastro</h1>
       <form method="submit">
         <input
           type="text"
-          data-testid={ datatestids[6] }
+          data-testid={ dataTestIds[6] }
           value={ registerForm.name }
           name="name"
           onChange={ handleChange }
         />
         <input
           type="email"
-          data-testid={ datatestids[7] }
+          data-testid={ dataTestIds[7] }
           value={ registerForm.email }
           name="email"
           onChange={ handleChange }
         />
         <input
           type="password"
-          data-testid={ datatestids[8] }
+          data-testid={ dataTestIds[8] }
           value={ registerForm.password }
           name="password"
           onChange={ handleChange }
         />
         <button
           type="button"
-          data-testid={ datatestids[9] }
+          data-testid={ dataTestIds[9] }
+          disabled={ disableButton() }
         >
           CADASTRAR
         </button>
