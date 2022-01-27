@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 
 const Button = ({ children, dataTestId, handleClick, submit, disabled }) => (
   <button
-    data-testid={ dataTestId }
-    onClick={ handleClick }
-    type={ submit ? 'submit' : 'button' }
-    disabled={ disabled }
+    data-testid={dataTestId}
+    onClick={handleClick}
+    type={submit ? 'submit' : 'button'}
+    disabled={disabled}
   >
     {children}
   </button>
