@@ -1,18 +1,17 @@
 import axios from 'axios';
 import jwt from 'jsonwebtoken';
+import addUserToLocalStorage from './addUserToLocalStorage';
 
 const axiosPost = async (URL, data) => {
   try {
     const res = await axios.post(URL, data);
-    console.log(res);
 
     const { token } = res.data;
     const decoded = jwt.verify(token, 'secret_key');
 
-    localStorage.setItem('token', token);
+    addUserToLocalStorage(decoded, token);
 
-    console.log(decoded.role);
-    return decoded.role;
+    return decoded;
   } catch (err) {
     console.log(err);
   }
