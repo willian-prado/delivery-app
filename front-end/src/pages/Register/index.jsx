@@ -49,34 +49,34 @@ const Register = () => {
       <form onSubmit={handleSubmit}>
         <input
           type="text"
-          data-testid={dataTestIds[6]}
-          value={registerForm.name}
+          data-testid={ dataTestIds[6] }
+          value={ registerForm.name }
           name="name"
-          onChange={handleChange}
+          onChange={ handleChange }
         />
         <input
           type="email"
-          data-testid={dataTestIds[7]}
-          value={registerForm.email}
+          data-testid={ dataTestIds[7] }
+          value={ registerForm.email }
           name="email"
-          onChange={handleChange}
+          onChange={ handleChange }
         />
         <input
           type="password"
-          data-testid={dataTestIds[8]}
-          value={registerForm.password}
+          data-testid={ dataTestIds[8] }
+          value={ registerForm.password }
           name="password"
-          onChange={handleChange}
+          onChange={ handleChange }
         />
         <button
           type="submit"
-          data-testid={dataTestIds[9]}
-          disabled={disableButton()}
+          data-testid={ dataTestIds[9] }
+          disabled={ disableButton() }
         >
           CADASTRAR
         </button>
       </form>
-      {warning && <div data-testid={dataTestIds[10]}>{warning}</div>}
+      { warning && <div data-testid={ dataTestIds[10] }>{ warning }</div> }
     </div>
   );
 };

@@ -38,36 +38,36 @@ const Login = () => {
         }}
       >
         <Input
-          dataTestId={dataTestIds[1]}
-          value={email}
-          handleChange={(event) => setEmail(event.target.value)}
+          dataTestId={ dataTestIds[1] }
+          value={ email }
+          handleChange={ (event) => setEmail(event.target.value) }
           type="text"
         />
         <Input
-          dataTestId={dataTestIds[2]}
-          value={password}
-          handleChange={(event) => setPassword(event.target.value)}
+          dataTestId={ dataTestIds[2] }
+          value={ password }
+          handleChange={ (event) => setPassword(event.target.value) }
           type="password"
         />
 
         <Button
-          dataTestId={dataTestIds[3]}
+          dataTestId={ dataTestIds[3] }
           submit
-          disabled={isButtonDisabled()}
+          disabled={ isButtonDisabled()}
         >
           Login
         </Button>
         <Button
-          dataTestId={dataTestIds[4]}
-          handleClick={() => navigate('/register')}
+          dataTestId={ dataTestIds[4] }
+          handleClick={ () => navigate('/register') }
         >
           Ainda não tenho conta
         </Button>
       </form>
 
-      {userNotFound && (
-        <p data-testid={dataTestIds[5]}>User not found</p>
-      )}
+      { userNotFound && (
+        <p data-testid={ dataTestIds[5] }>User not found</p>
+      ) }
     </main>
   );
 };
