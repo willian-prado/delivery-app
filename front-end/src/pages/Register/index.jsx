@@ -11,9 +11,11 @@ const Register = () => {
     email: '',
     password: '',
   });
+  const [warning, setWarning] = React.useState('');
 
   const handleChange = ({ target }) => {
     const { name, value } = target;
+    setWarning('');
     setRegisterForm({ ...registerForm, [name]: value });
   };
 
@@ -30,7 +32,11 @@ const Register = () => {
       console.log(response);
       navigate('/customer/products');
     } catch (error) {
-      console.log(error.response.message);
+      setWarning(error.response.data.message);
+      const timeout = 5000;
+      setTimeout(() => {
+        setWarning('');
+      }, timeout);
     }
   };
 
@@ -67,6 +73,7 @@ const Register = () => {
           CADASTRAR
         </button>
       </form>
+      { warning && <div data-testid={ dataTestIds[10] }>{warning}</div> }
     </div>
   );
 };
