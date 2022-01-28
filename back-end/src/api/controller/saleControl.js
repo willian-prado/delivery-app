@@ -7,10 +7,13 @@ const createSaleAndProduct = async (req, res) => {
   try {
     const { sale, saleProduct } = req.body;
   
-    await createSale(sale);
-    await createSalesProduct(saleProduct);
+    const { dataValues: { id } } = await createSale(sale);
 
-    return res.status(201);
+    saleProduct.forEach(
+      async (xablay) => createSalesProduct({ ...xablay, id }),
+    );
+
+    return res.status(201).end();
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
