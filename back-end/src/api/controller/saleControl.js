@@ -1,14 +1,19 @@
-const { createSale } = require('../service/salesService');
+const {
+  createSale,
+  createSalesProduct,
+} = require('../service/salesService');
 
-const create = async (req, res) => {
+const createSaleAndProduct = async (req, res) => {
   try {
-    const { sale } = req.body;
+    const { sale, saleProduct } = req.body;
   
-    const creatingSale = await createSale(sale);
-    return res.status(200).json(creatingSale);
+    await createSale(sale);
+    await createSalesProduct(saleProduct);
+
+    return res.status(201);
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
 };
 
-module.exports = { create };
+module.exports = { createSaleAndProduct };
