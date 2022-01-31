@@ -1,7 +1,11 @@
 const {
   createSale,
   createSalesProduct,
+  getSalesService,
+  getSaleByIdService,
 } = require('../service/salesService');
+
+const getSellerId = require('../middleware/getSellerId');
 
 const createSaleAndProduct = async (req, res) => {
   try {
@@ -10,7 +14,7 @@ const createSaleAndProduct = async (req, res) => {
     const { dataValues: { id } } = await createSale(sale);
 
     saleProduct.forEach(
-      async (xablay) => createSalesProduct({ ...xablay, id }),
+      async (newSale) => createSalesProduct({ ...newSale, id }),
     );
 
     return res.status(201).end();
@@ -19,4 +23,38 @@ const createSaleAndProduct = async (req, res) => {
   }
 };
 
-module.exports = { createSaleAndProduct };
+const getSalesBySellerID = async (req, res) => {
+  try {
+    const { authorization } = req.headers;
+    
+    const id = getSellerId(authorization);
+
+    if (!id) {
+      return res.status(404).json({ message: 'Invalid User' });
+    }
+
+    const sales = await getSalesService(id);
+
+    res.status(200).json({ sales });
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};
+
+const getSaleById = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const sale = await getSaleByIdService(id);
+    
+    if (!sale) {
+      return res.status(404).json({ message: 'Sale not found' });
+    }
+
+    res.status(200).json(sale);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};
+
+module.exports = { createSaleAndProduct, getSalesBySellerID, getSaleById };

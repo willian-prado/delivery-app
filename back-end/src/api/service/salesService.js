@@ -18,4 +18,22 @@ const createSalesProduct = async ({ id: saleId, product_id: productId, quantity 
   }
 };
 
-module.exports = { createSale, createSalesProduct };
+const getSalesService = async (id) => {
+  try {
+    const sales = await Sale.findAll({ where: { sellerId: id } });
+    return sales;
+  } catch (error) {
+    throw new Error(error);
+  }
+};
+
+const getSaleByIdService = async (id) => {
+  try {
+    const sale = await Sale.findOne({ where: { id } });
+    return sale;
+  } catch (error) {
+    throw new Error(error);
+  }
+};
+
+module.exports = { createSale, createSalesProduct, getSalesService, getSaleByIdService };

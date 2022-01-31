@@ -16,13 +16,14 @@ module.exports = {
         onDelete: 'CASCADE',
         onUpdate: 'CASCADE'
       },
-      seller_id: {
+      sellerId: {
         type: Sequelize.INTEGER,
         allowNull: false,
         foreignKey: true,
         references: { model: 'users', key: 'id' },
         onDelete: 'CASCADE',
         onUpdate: 'CASCADE',
+        field: 'seller_id',
       },
       total_price: {
         type: Sequelize.DECIMAL(9, 2),
