@@ -3,22 +3,26 @@ import PropTypes from 'prop-types';
 import { Link, useNavigate } from 'react-router-dom';
 import dataTestIds from '../../dataTestIds';
 
-const Navbar = ({ name, role, orders }) => {
+const Navbar = ({ name, role }) => {
   const navigate = useNavigate();
 
   return (
     <nav>
-      <Link data-testid={ dataTestIds[11] } to={ `/${role}/products` }>Produtos</Link>
       {
-        orders && (
+        role === 'customer' && (
           <Link
-            data-testid={ dataTestIds[12] }
-            to={ `/${role}/orders` }
+            data-testid={ dataTestIds[11] }
+            to={ `/${role}/products` }
           >
-            Meus pedidos
-          </Link>
-        )
+            Produtos
+          </Link>)
       }
+      <Link
+        data-testid={ dataTestIds[12] }
+        to={ `/${role}/orders` }
+      >
+        {role === 'customer' ? <p>Meus Pedidos</p> : <p>Pedidos</p>}
+      </Link>
 
       <span data-testid={ dataTestIds[13] }>{name}</span>
       <button
@@ -39,7 +43,6 @@ const Navbar = ({ name, role, orders }) => {
 Navbar.propTypes = {
   name: PropTypes.string.isRequired,
   role: PropTypes.string.isRequired,
-  orders: PropTypes.bool.isRequired,
 };
 
 export default Navbar;
