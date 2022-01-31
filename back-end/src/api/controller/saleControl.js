@@ -17,7 +17,7 @@ const createSaleAndProduct = async (req, res) => {
       async (newSale) => createSalesProduct({ ...newSale, id }),
     );
 
-    return res.status(201).end();
+    return res.status(201).send({ id });
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
