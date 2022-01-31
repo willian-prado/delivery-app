@@ -1,3 +1,4 @@
+const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
@@ -22,6 +23,9 @@ app.use(express.static('public'));
 app.use('/login', loginRouter);
 app.use('/user', usersRouter);
 app.use('/products', productRouter);
+
+app.use('/images', express.static(path.join(__dirname, '../../', 'public')));
+
 app.use('/checkout', salesRouter);
 
 app.get('/coffee', (_req, res) => res.status(418).end());
