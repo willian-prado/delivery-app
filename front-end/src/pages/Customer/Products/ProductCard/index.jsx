@@ -1,7 +1,9 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
-import { updateProduct, addProduct, removeProduct } from '../../../../redux/cartSlice';
+import {
+  updateProduct, addProduct, decreaseProductQuantity,
+} from '../../../../redux/cartSlice';
 import dataTestIds from '../../../../dataTestIds';
 
 const ProductCard = ({ product }) => {
@@ -19,7 +21,7 @@ const ProductCard = ({ product }) => {
       <button
         data-testid={ `${dataTestIds[19]}${id}` }
         type="button"
-        onClick={ () => dispatch(removeProduct({ name })) }
+        onClick={ () => dispatch(decreaseProductQuantity({ name })) }
         disabled={ quantity < 1 }
       >
         -

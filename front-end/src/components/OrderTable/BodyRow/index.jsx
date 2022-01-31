@@ -1,5 +1,7 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
+import { removeProduct } from '../../../redux/cartSlice';
 import Button from '../../Button';
 import dataTestIds from '../../../dataTestIds';
 
@@ -29,30 +31,38 @@ const dataTestIdsBodyRow = {
   },
 };
 
-const BodyRow = ({ item, page, order, remove }) => (
-  <tr>
-    <td data-testid={ dataTestIdsBodyRow[page].item + item }>
-      {item + 1}
-    </td>
-    <td data-testid={ dataTestIdsBodyRow[page].name + item }>
-      {order.name}
-    </td>
-    <td data-testid={ dataTestIdsBodyRow[page].quantity + item }>
-      {order.quantity}
-    </td>
-    <td data-testid={ dataTestIdsBodyRow[page].price + item }>
-      {order.price.split('.').join(',')}
-    </td>
-    <td data-testid={ dataTestIdsBodyRow[page].totalValue + item }>
-      {String((order.quantity * order.price).toFixed(2)).split('.').join(',')}
-    </td>
-    {remove && (
-      <td data-testid={ dataTestIdsBodyRow[page].remove + item }>
-        <Button>Remove</Button>
+const BodyRow = ({ item, page, order, remove }) => {
+  const dispatch = useDispatch();
+
+  return (
+    <tr>
+      <td data-testid={ dataTestIdsBodyRow[page].item + item }>
+        {item + 1}
       </td>
-    )}
-  </tr>
-);
+      <td data-testid={ dataTestIdsBodyRow[page].name + item }>
+        {order.name}
+      </td>
+      <td data-testid={ dataTestIdsBodyRow[page].quantity + item }>
+        {order.quantity}
+      </td>
+      <td data-testid={ dataTestIdsBodyRow[page].price + item }>
+        {order.price.split('.').join(',')}
+      </td>
+      <td data-testid={ dataTestIdsBodyRow[page].totalValue + item }>
+        {String((order.quantity * order.price).toFixed(2)).split('.').join(',')}
+      </td>
+      {remove && (
+        <td data-testid={ dataTestIdsBodyRow[page].remove + item }>
+          <Button
+            handleClick={ () => dispatch(removeProduct({ name: order.name })) }
+          >
+            Remove
+          </Button>
+        </td>
+      )}
+    </tr>
+  );
+};
 
 BodyRow.propTypes = {
   item: PropTypes.number.isRequired,

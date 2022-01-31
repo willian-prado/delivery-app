@@ -37,7 +37,7 @@ export const counterSlice = createSlice({
       state.totalValue = 0;
       state.totalValue = getTotalValue(state);
     },
-    removeProduct: (state, { payload }) => {
+    decreaseProductQuantity: (state, { payload }) => {
       const productFoundIndex = state.products.findIndex(
         ({ name }) => name === payload.name,
       );
@@ -46,11 +46,20 @@ export const counterSlice = createSlice({
       state.totalValue = 0;
       state.totalValue = getTotalValue(state);
     },
+    removeProduct: (state, { payload }) => {
+      const productFoundIndex = state.products.findIndex(
+        ({ name }) => name === payload.name,
+      );
+      state.products[productFoundIndex].quantity = 0;
+
+      state.totalValue = 0;
+      state.totalValue = getTotalValue(state);
+    },
   },
 });
 
 export const {
-  startCart, updateProduct, addProduct, removeProduct,
+  startCart, updateProduct, addProduct, decreaseProductQuantity, removeProduct,
 } = counterSlice.actions;
 
 export const selectCart = (state) => state.cart.products;
