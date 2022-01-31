@@ -7,6 +7,7 @@ const loginRouter = require('./routes/loginRouter');
 const usersRouter = require('./routes/usersRouter');
 const productRouter = require('./routes/productRouter');
 const salesRouter = require('./routes/salesRouter');
+const managerRouter = require('./routes/managerRouter');
 
 const corsOptions = {
   origin: 'http://localhost:3000',
@@ -23,6 +24,7 @@ app.use(express.static('public'));
 app.use('/login', loginRouter);
 app.use('/user', usersRouter);
 app.use('/products', productRouter);
+app.use('/admin/manage', managerRouter);
 
 app.use('/images', express.static(path.join(__dirname, '../../', 'public')));
 

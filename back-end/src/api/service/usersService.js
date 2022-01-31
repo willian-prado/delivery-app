@@ -1,28 +1,17 @@
-const jwt = require('jsonwebtoken');
 const md5 = require('md5');
 const { User } = require('../../database/models/index');
 
-const jwtConfig = {
-  expiresIn: '20d',
-  algorithm: 'HS256',
-};
+const tokenGenerator = require('../middleware/tokenGenerator');
 
-const secretPassword = 'secret_key';
-
-const checkEmailExistence = async (email) => User.findOne({
-  where: { email },
-});
+const checkEmailExistence = require('../middleware/checkEmailExistence');
 
 const creatNewUser = async ({ name, email, password }) => {
-  const checkEmail = await checkEmailExistence(email);
-  if (checkEmail !== null) {
-    const message = 'User already registered';
-    throw new Error(message);
-  }
+  await checkEmailExistence(email);
+
   const newPassword = md5(password);
   const role = 'customer';
   const user = await User.create({ name, email, password: newPassword, role });
-  const token = jwt.sign(user.dataValues, secretPassword, jwtConfig);
+  const token = tokenGenerator(user);
   return { token };
 };
 
