@@ -18,8 +18,9 @@ const OrderTable = ({ page, orders, remove }) => (
     </thead>
     <tbody>
       {
-        orders.map((order) => (
+        orders.map((order, index) => (
           <BodyRow
+            item={ index }
             key={ order }
             page={ page }
             order={ order }

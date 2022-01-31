@@ -6,14 +6,14 @@ import dataTestIds from '../../../dataTestIds';
 const dataTestIdsBodyRow = {
   sellerDetails: {
     item: dataTestIds[59],
-    description: dataTestIds[60],
+    name: dataTestIds[60],
     quantity: dataTestIds[61],
     price: dataTestIds[62],
     totalValue: dataTestIds[63],
   },
   customerCheckout: {
     item: dataTestIds[22],
-    description: dataTestIds[23],
+    name: dataTestIds[23],
     quantity: dataTestIds[24],
     price: dataTestIds[25],
     totalValue: dataTestIds[26],
@@ -21,7 +21,7 @@ const dataTestIdsBodyRow = {
   },
   customerDetails: {
     item: dataTestIds[41],
-    description: dataTestIds[42],
+    name: dataTestIds[42],
     quantity: dataTestIds[43],
     price: dataTestIds[44],
     totalValue: dataTestIds[45],
@@ -29,25 +29,25 @@ const dataTestIdsBodyRow = {
   },
 };
 
-const BodyRow = ({ page, order, remove }) => (
+const BodyRow = ({ item, page, order, remove }) => (
   <tr>
-    <td data-testid={ dataTestIdsBodyRow[page].item + order.item }>
-      {order.item}
+    <td data-testid={ dataTestIdsBodyRow[page].item + item }>
+      {item + 1}
     </td>
-    <td data-testid={ dataTestIdsBodyRow[page].description + order.item }>
-      {order.description}
+    <td data-testid={ dataTestIdsBodyRow[page].name + item }>
+      {order.name}
     </td>
-    <td data-testid={ dataTestIdsBodyRow[page].quantity + order.item }>
+    <td data-testid={ dataTestIdsBodyRow[page].quantity + item }>
       {order.quantity}
     </td>
-    <td data-testid={ dataTestIdsBodyRow[page].price + order.item }>
-      {order.price}
+    <td data-testid={ dataTestIdsBodyRow[page].price + item }>
+      {order.price.split('.').join(',')}
     </td>
-    <td data-testid={ dataTestIdsBodyRow[page].totalValue + order.item }>
-      {order.totalValue}
+    <td data-testid={ dataTestIdsBodyRow[page].totalValue + item }>
+      {String((order.quantity * order.price).toFixed(2)).split('.').join(',')}
     </td>
     {remove && (
-      <td data-testid={ dataTestIdsBodyRow[page].remove + order.item }>
+      <td data-testid={ dataTestIdsBodyRow[page].remove + item }>
         <Button>Remove</Button>
       </td>
     )}
@@ -55,13 +55,12 @@ const BodyRow = ({ page, order, remove }) => (
 );
 
 BodyRow.propTypes = {
+  item: PropTypes.number.isRequired,
   page: PropTypes.string.isRequired,
   order: PropTypes.shape({
-    item: PropTypes.number,
-    description: PropTypes.string,
+    name: PropTypes.string,
     quantity: PropTypes.number,
     price: PropTypes.string,
-    totalValue: PropTypes.string,
   }).isRequired,
   remove: PropTypes.bool.isRequired,
 };
