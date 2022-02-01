@@ -54,7 +54,7 @@ const CustomerProducts = () => {
         >
           <span data-testid={ dataTestIds[21] }>
 
-            {`Ver carrinho: R$ ${String(totalPrice).split('.').join(',')}`}
+            {`Ver carrinho: R$ ${String(totalPrice.toFixed(2)).split('.').join(',')}`}
           </span>
         </button>
 
