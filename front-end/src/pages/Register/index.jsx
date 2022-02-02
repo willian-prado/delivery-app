@@ -11,6 +11,7 @@ const Register = () => {
     name: '',
     email: '',
     password: '',
+    role: 'customer',
   });
   const [warning, setWarning] = React.useState('');
 
