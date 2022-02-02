@@ -26,7 +26,7 @@ const CustomerCheckout = () => {
 
       <main>
         <h1>Customer Checkout</h1>
-
+        <h3>Finalizar Pedido</h3>
         <OrderTable
           remove
           page="customerCheckout"

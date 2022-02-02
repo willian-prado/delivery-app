@@ -25,32 +25,28 @@ const ordersDataTestIds = {
   },
 };
 
-const formatOrders = (orders, page) => {
-  console.log('orders: ', orders);
-
-  return (orders.map((order) => ({
-    id: {
-      text: order.id,
-      dataTestId: ordersDataTestIds[page].id,
-    },
-    status: {
-      text: order.status,
-      dataTestId: ordersDataTestIds[page].status,
-    },
-    sale_date: {
-      text: order.sale_date,
-      dataTestId: ordersDataTestIds[page].sale_date,
-    },
-    total_price: {
-      text: order.total_price,
-      dataTestId: ordersDataTestIds[page].total_price,
-    },
-    delivery_address: {
-      text: order.delivery_address,
-      dataTestId: ordersDataTestIds[page].delivery_address,
-    },
-  })).map(serialize)
-  );
-};
+const formatOrders = (orders, page) => (orders.map((order) => ({
+  id: {
+    text: order.id,
+    dataTestId: ordersDataTestIds[page].id,
+  },
+  status: {
+    text: order.status,
+    dataTestId: ordersDataTestIds[page].status,
+  },
+  sale_date: {
+    text: order.sale_date,
+    dataTestId: ordersDataTestIds[page].sale_date,
+  },
+  total_price: {
+    text: order.total_price,
+    dataTestId: ordersDataTestIds[page].total_price,
+  },
+  delivery_address: {
+    text: order.delivery_address,
+    dataTestId: ordersDataTestIds[page].delivery_address,
+  },
+})).map(serialize)
+);
 
 export default formatOrders;
