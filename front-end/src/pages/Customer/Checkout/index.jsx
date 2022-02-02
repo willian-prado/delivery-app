@@ -45,7 +45,7 @@ const CustomerCheckout = () => {
 
             try {
               const sale = {
-                user_id: customer.id,
+                userId: customer.id,
                 sellerId: 2,
                 total_price: totalValue.toFixed(2),
                 delivery_address: address,

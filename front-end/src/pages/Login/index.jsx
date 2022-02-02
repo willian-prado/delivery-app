@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from '../../components/Button';
 import Input from '../../components/Input';
@@ -12,12 +12,19 @@ const Login = () => {
   const [password, setPassword] = React.useState('');
   const [userNotFound, setUserNotFound] = React.useState(false);
   const isButtonDisabled = () => (!verifyLogin(email, password));
+  const userStorage = JSON.parse(localStorage.getItem('user'));
 
   const routes = {
     customer: '/customer/products',
     seller: '/seller/orders',
     admin: '/admin/manage',
   };
+
+  useEffect(() => {
+    if (userStorage) {
+      navigate(routes[userStorage.role]);
+    }
+  });
 
   return (
     <main>

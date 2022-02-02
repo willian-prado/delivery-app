@@ -27,13 +27,14 @@ const getSalesBySellerID = async (req, res) => {
   try {
     const { authorization } = req.headers;
     
-    const id = getSellerId(authorization);
+    const { id, role } = getSellerId(authorization);
+    console.log(id, role);
 
     if (!id) {
       return res.status(404).json({ message: 'Invalid User' });
     }
 
-    const sales = await getSalesService(id);
+    const sales = await getSalesService(id, role);
 
     res.status(200).json({ sales });
   } catch (error) {
