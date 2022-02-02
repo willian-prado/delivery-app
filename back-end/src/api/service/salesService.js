@@ -18,9 +18,13 @@ const createSalesProduct = async ({ id: saleId, product_id: productId, quantity 
   }
 };
 
-const getSalesService = async (id) => {
+const getSalesService = async (id, role) => {
   try {
-    const sales = await Sale.findAll({ where: { sellerId: id } });
+    if (role === 'seller') {
+      const sales = await Sale.findAll({ where: { sellerId: id } });
+      return sales;
+    }
+    const sales = await Sale.findAll({ where: { userId: id } });
     return sales;
   } catch (error) {
     throw new Error(error);
