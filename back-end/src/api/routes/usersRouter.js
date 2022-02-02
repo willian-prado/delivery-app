@@ -5,8 +5,11 @@ const {
   validatePassword,
 } = require('../middleware/auth-middlewareUsers');
 
-const { createUser } = require('../controller/usersControl');
+const { validateJWT } = require('../middleware/validateJWT');
+
+const { createUser, getUsers } = require('../controller/usersControl');
 
 router.post('/', validateEmail, validatePassword, createUser);
+router.get('/', validateJWT, getUsers);
 
 module.exports = router;
