@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router';
 import moment from 'moment';
+import axios from 'axios';
 import Navbar from '../../../../components/Navbar';
 import { axiosGetAll } from '../../../../helpers/axios';
 import OrderTable from '../../../../components/OrderTable';
@@ -49,12 +50,22 @@ const CustomerOrderDetails = () => {
               </div>
               <div data-testid={ dataTestIds[40] }>{order.status}</div>
               <Button
-                handleClick={ () => {
-                // axios
+                handleClick={ async () => {
+                  try {
+                    await axios({
+                      method: 'put',
+                      url: `http://localhost:3001/checkout/${params.id}`,
+                      data: { status: 'Entregue' },
+                      headers: { Authorization: customer.token },
+                    });
+                    setOrder({ ...order, status: 'Entregue' });
+                  } catch (error) {
+                    console.log(error);
+                  }
                 } }
                 dataTestId={ dataTestIds[47] }
                 submit={ false }
-                disabled
+                disabled={ order.status !== 'Em Trânsito' }
               >
                 Marcar como entregue
               </Button>
