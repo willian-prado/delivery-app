@@ -24,8 +24,6 @@ const SellerOrder = () => {
     fetchOrders();
   }, [seller.token]);
 
-  seller.role = 'seller';
-
   return (
     <>
       <header>

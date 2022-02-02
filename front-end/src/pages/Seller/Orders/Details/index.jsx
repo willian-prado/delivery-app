@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router';
 import moment from 'moment';
+import axios from 'axios';
 import Navbar from '../../../../components/Navbar';
 import { axiosGetAll } from '../../../../helpers/axios';
 import OrderTable from '../../../../components/OrderTable';
@@ -12,6 +13,12 @@ const SellerOrderDetails = () => {
   const [order, setOrder] = React.useState({});
   const [products, setProducts] = React.useState([]);
   const params = useParams();
+
+  // const statusObject = {
+  //   Pendente: { next: 'Preparando' },
+  //   Preparando: { next: 'Em Trânsito' },
+  //   EmTrânsito: { next: 'Entregue' },
+  // };
 
   useEffect(() => {
     const fetchOrder = async () => {
@@ -48,21 +55,41 @@ const SellerOrderDetails = () => {
               </div>
               <div data-testid={ dataTestIds[55] }>{order.status}</div>
               <Button
-                handleClick={ () => {
-
+                handleClick={ async () => {
+                  try {
+                    await axios({
+                      method: 'put',
+                      url: `http://localhost:3001/checkout/${params.id}`,
+                      data: { status: 'Preparando' },
+                      headers: { Authorization: seller.token },
+                    });
+                    setOrder({ ...order, status: 'Preparando' });
+                  } catch (error) {
+                    console.log(error);
+                  }
                 } }
                 dataTestId={ dataTestIds[57] }
-                disabled={ false }
+                disabled={ order.status !== 'Pendente' }
               >
                 Preparar Pedido
               </Button>
               <Button
-                handleClick={ () => {
-                // axios
+                handleClick={ async () => {
+                  try {
+                    await axios({
+                      method: 'put',
+                      url: `http://localhost:3001/checkout/${params.id}`,
+                      data: { status: 'Em Trânsito' },
+                      headers: { Authorization: seller.token },
+                    });
+                    setOrder({ ...order, status: 'Em Trânsito' });
+                  } catch (error) {
+                    console.log(error);
+                  }
                 } }
                 dataTestId={ dataTestIds[58] }
                 submit={ false }
-                disabled
+                disabled={ order.status !== 'Preparando' }
               >
                 Saiu para entrega
               </Button>
