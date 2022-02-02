@@ -1,4 +1,4 @@
-const { Sale, SalesProduct } = require('../../database/models');
+const { Sale, SalesProduct, Product, User } = require('../../database/models');
 
 const createSale = async (sale) => {
   try {
@@ -33,7 +33,18 @@ const getSalesService = async (id, role) => {
 
 const getSaleByIdService = async (id) => {
   try {
-    const sale = await Sale.findOne({ where: { id } });
+    const sale = await Sale.findOne(
+      { where: { id },
+        include: [
+          { model: Product, as: 'products', through: { attributes: ['quantity'] } },
+          { 
+            model: User,
+            as: 'Seller',
+            atributes: { include: ['id', 'name', 'role'] } },
+          { model: User, as: 'Customer', atributes: { include: ['id', 'name', 'role'] } },
+        ],
+      },
+    );
     return sale;
   } catch (error) {
     throw new Error(error);
