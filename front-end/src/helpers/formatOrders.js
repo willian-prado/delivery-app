@@ -16,6 +16,13 @@ const ordersDataTestIds = {
     total_price: dataTestIds[51],
     delivery_address: dataTestIds[52],
   },
+  customerOrders: {
+    id: dataTestIds[33],
+    status: dataTestIds[34],
+    sale_date: dataTestIds[35],
+    total_price: dataTestIds[36],
+    delivery_address: 'none',
+  },
 };
 
 const formatOrders = (orders, page) => {

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import moment from 'moment';
 
 const SaleCard = ({ order, role }) => {
   const { id, status, saleDate, totalPrice, deliveryAddress } = order;
@@ -10,9 +11,11 @@ const SaleCard = ({ order, role }) => {
       <li>
         <div data-testid={ `${id.dataTestId}${id.text}` }>{`Pedido ${id.text}`}</div>
         <div data-testid={ `${status.dataTestId}${id.text}` }>{status.text}</div>
-        <div data-testid={ `${saleDate.dataTestId}${id.text}` }>{saleDate.text}</div>
+        <div data-testid={ `${saleDate.dataTestId}${id.text}` }>
+          { moment(saleDate.text).format('DD/MM/YYYY') }
+        </div>
         <div data-testid={ `${totalPrice.dataTestId}${id.text}` }>
-          {`R$ ${totalPrice.text}`}
+          {`${totalPrice.text}`.split('.').join(',')}
         </div>
         { deliveryAddress && (
           <div data-testid={ `${deliveryAddress.dataTestId}${id.text}` }>

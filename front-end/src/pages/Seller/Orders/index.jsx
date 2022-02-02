@@ -3,7 +3,6 @@ import Navbar from '../../../components/Navbar';
 import SaleCard from '../../../components/SaleCard';
 import { axiosGetAll } from '../../../helpers/axios';
 import formatOrders from '../../../helpers/formatOrders';
-// import mockSellerOrders from '../../../mocks/mockSellerOrders';
 
 const SellerOrder = () => {
   const [seller] = useState(JSON.parse(localStorage.getItem('user')));
