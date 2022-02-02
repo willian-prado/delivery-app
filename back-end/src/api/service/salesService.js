@@ -51,4 +51,24 @@ const getSaleByIdService = async (id) => {
   }
 };
 
-module.exports = { createSale, createSalesProduct, getSalesService, getSaleByIdService };
+const updateSaleStatusService = async (id, status) => {
+  try {
+    const sale = await Sale.findByPk(id, {
+      include: [
+        { model: Product, as: 'products', through: { attributes: ['quantity'] } },
+        { 
+          model: User,
+          as: 'Seller',
+          atributes: { include: ['id', 'name', 'role'] } },
+        { model: User, as: 'Customer', atributes: { include: ['id', 'name', 'role'] } },
+      ],
+    });
+    await sale.update({ status }, { where: { id } });
+    return sale;
+  } catch (error) {
+    throw new Error(error);
+  }
+};
+
+module.exports = { 
+  createSale, createSalesProduct, getSalesService, getSaleByIdService, updateSaleStatusService };

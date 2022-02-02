@@ -3,6 +3,7 @@ const {
   createSalesProduct,
   getSalesService,
   getSaleByIdService,
+  updateSaleStatusService,
 } = require('../service/salesService');
 
 const getSellerId = require('../middleware/getSellerId');
@@ -58,4 +59,17 @@ const getSaleById = async (req, res) => {
   }
 };
 
-module.exports = { createSaleAndProduct, getSalesBySellerID, getSaleById };
+const updateSaleStatus = async (req, res) => {
+  try { 
+    const { id } = req.params;
+    const { status } = req.body;
+
+    const updatedSale = await updateSaleStatusService(id, status);
+
+    res.status(200).json(updatedSale);
+  } catch (error) {
+    res.status(500).send();
+  }
+};
+
+module.exports = { createSaleAndProduct, getSalesBySellerID, getSaleById, updateSaleStatus };
