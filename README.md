@@ -1,118 +1,66 @@
-### Termos de acordo
+## Projeto Delivery App
 
-Ao iniciar este projeto, você concorda com as diretrizes do Código de Ética e Conduta e do Manual da Pessoa Estudante da Trybe.
+> Décimo terceiro e último projeto do módulo de Back-end do curso de desenvolvimento web da Trybe.
 
----
+**Contexto**
 
-# Boas vindas ao repositório do projeto App de Delivery!
+Este é o nosso último projeto em grupo e ele finaliza o bloco de Back-end. Pela primeira vez, devemos construir uma aplicação full-stack, colocando em prática tudo o que aprendemos nos módulos de Front-end e Back-end. No Front-end dessa aplicação, trabalhamos principalmente com React, Redux e React Router. Já no Back-end, foi utilizado Node e Express para construir a API e ORM Sequelize para gestão do banco de dados MySQL. Inicialmente, desenvolvemos em grupo a configuração do Sequelize e estruturação de pastas e rotas da aplicação. Posteriormente, uma parte do grupo se concentrou nos requisitos do Front-end e outra parte nos de Back-end que passaram a serem feitos em paralelo. O desenvolvimento da aplicação foi acompanhado por um quadro Kanban no aplicativo Trello, enquanto o aplicativo Discord foi utilizado para a troca de mensagens e *pair programming*.
 
-Você já usa o GitHub diariamente para desenvolver os exercícios, certo? Agora, para desenvolver os projetos, você deverá seguir as instruções a seguir. Tenha atenção a cada passo, e se tiver qualquer dúvida nos envie por _Slack_! #vqv 🚀
+**Objetivo do projeto**
 
-Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu projeto a partir desse repositório, utilizando uma branch específica e um _Pull Request_ para colocar seus códigos.
+Desenvolver um sistema que permite visualizar, buscar, filtrar, favoritar, compartilhar e acompanhar o processo de preparação de receitas e drinks . A base de dados serão 2 APIs distintas, uma para comidas  [TheMealDB](https://www.themealdb.com/) e outra para bebidas [TheCocktailDB](https://www.thecocktaildb.com/api.php).
 
----
+**Principais habilidades desenvolvidas nesse trabalho:**
 
-# Sumário
+  - Manter aderência do código à especificação. Seu programa deve se comportar como especificado no repositório, no [protótipo]   (https://www.figma.com/file/cNKu41RhnPIgNqrbMTzmUI/Delivery-App-new-trybeer?node-id=0%3A1) e no [Diagrama de ER](./assets/readme/eer.png);
+  - Manter a organização do seu código e a arquitetura geral da aplicação (tanto da API quando do front-end);
+  - Manter aderência ao padrão REST na API;
+  - Respeitar a estrutura do banco de dados. Sua implementação não deve adicionar ou remover tabelas, campos ou relacionamentos e sua API deve estar  preparada para aproveitar essa estrutura por completo;
+  - Manter aderência aos princípios SOLID;
 
-- [Boas vindas ao repositório do projeto App de Delivery!](#boas-vindas-ao-repositório-do-projeto-app-de-delivery)
-- [Sumário](#sumário)
-- [Contexto](#contexto)
-- [Habilidades](#habilidades)
-- [Entregáveis](#entregáveis)
-  - [O que deverá ser desenvolvido](#o-que-deverá-ser-desenvolvido)
-  - [Desenvolvimento](#desenvolvimento)
-  - [Data de Entrega](#data-de-entrega)
-- [Instruções para entregar seu projeto:](#instruções-para-entregar-seu-projeto)
-  - [Antes de começar a desenvolver](#antes-de-começar-a-desenvolver)
-  - [Durante o desenvolvimento](#durante-o-desenvolvimento)
-  - [Scripts relevantes do `package.json` principal](#scripts-relevantes-do-packagejson-principal)
-  - [Preparando o campo e iniciando o projeto](#preparando-o-campo-e-iniciando-o-projeto)
-  - [Linter](#linter)
-  - [Sequelize](#sequelize)
-  - [Componentização](#componentização)
-  - [Data-testids](#data-testids)
-- [Requisitos do projeto](#requisitos-do-projeto)
-  - [`Fluxo Comum`](#fluxo-comum)
-    - [`01login.test`](#01logintest)
-      - [1 - Crie uma tela de login que deve ser acessível pelos endpoints / e /login no navegador](#1---crie-uma-tela-de-login-que-deve-ser-acessível-pelos-endpoints--e-login-no-navegador)
-      - [2 - Crie os elementos da tela de login com os data-testids disponíveis no protótipo](#2---crie-os-elementos-da-tela-de-login-com-os-data-testids-disponíveis-no-protótipo)
-      - [3 - Desenvolva a tela de login de maneira que ela impossibilite o login com dados mal-formatados](#3---desenvolva-a-tela-de-login-de-maneira-que-ela-impossibilite-o-login-com-dados-mal-formatados)
-      - [4 - Desenvolva a tela de login de maneira que ela impossibilite o login com dados válidos, porém inexistentes no banco de dados](#4---desenvolva-a-tela-de-login-de-maneira-que-ela-impossibilite-o-login-com-dados-válidos-porém-inexistentes-no-banco-de-dados)
-      - [5 - Desenvolva a tela de login de maneira que ela possibilite fazer o login com dados válidos e existentes no banco de dados](#5---desenvolva-a-tela-de-login-de-maneira-que-ela-possibilite-fazer-o-login-com-dados-válidos-e-existentes-no-banco-de-dados)
-    - [`02register.test`](#02registertest)
-      - [6 - Crie uma tela de registro que deve ser acessível via endpoint /register no navegador e pelo botão de registro na tela de login](#6---crie-uma-tela-de-registro-que-deve-ser-acessível-via-endpoint-register-no-navegador-e-pelo-botão-de-registro-na-tela-de-login)
-      - [7 - Crie os elementos da tela de registro com os data-testids disponíveis no protótipo](#7---crie-os-elementos-da-tela-de-registro-com-os-data-testids-disponíveis-no-protótipo)
-      - [8 - Desenvolva a tela de registro de maneira que ela impossibilite o cadastro com dados mal-formatados](#8---desenvolva-a-tela-de-registro-de-maneira-que-ela-impossibilite-o-cadastro-com-dados-mal-formatados)
-      - [9 - Desenvolva a tela de registro de maneira que ela possibilite cadastrar com dados válidos](#9---desenvolva-a-tela-de-registro-de-maneira-que-ela-possibilite-cadastrar-com-dados-válidos)
-      - [10 - Desenvolva a tela de registro de maneira que ela impossibilite o cadastro de um usuário já existente](#10---desenvolva-a-tela-de-registro-de-maneira-que-ela-impossibilite-o-cadastro-de-um-usuário-já-existente)
-  - [`Fluxo do Cliente`](#fluxo-do-cliente)
-    - [`03customer_products.test`](#03customer_productstest)
-      - [11 - Crie uma tela de produtos do cliente contendo uma barra de navegação - navbar - que servirá também para demais telas das pessoas usuárias](#11---crie-uma-tela-de-produtos-do-cliente-contendo-uma-barra-de-navegação---navbar---que-servirá-também-para-demais-telas-das-pessoas-usuárias)
-      - [12 - Desenvolva a tela de produtos do cliente criando os demais elementos com os data-testids disponíveis no protótipo](#12---desenvolva-a-tela-de-produtos-do-cliente-criando-os-demais-elementos-com-os-data-testids-disponíveis-no-protótipo)
-      - [13 - Desenvolva a tela de produtos do cliente de forma que ela pressuponha dados válidos da pessoa usuária armazenados no localStorage](#13---desenvolva-a-tela-de-produtos-do-cliente-de-forma-que-ela-pressuponha-dados-válidos-da-pessoa-usuária-armazenados-no-localstorage)
-      - [14 - Desenvolva a tela de produtos do cliente de forma que os cards de todos os produtos pré-cadastrados contenham os valores corretos](#14---desenvolva-a-tela-de-produtos-do-cliente-de-forma-que-os-cards-de-todos-os-produtos-pré-cadastrados-contenham-os-valores-corretos)
-      - [15 - Desenvolva a tela de produtos do cliente de forma que o preço total esteja correto após a adição de itens aleatórios](#15---desenvolva-a-tela-de-produtos-do-cliente-de-forma-que-o-preço-total-esteja-correto-após-a-adição-de-itens-aleatórios)
-      - [16 - Desenvolva a tela de produtos do cliente de forma que haja um botão de carrinho que redirecionará para a tela de checkout caso itens sejam adicionados](#16---desenvolva-a-tela-de-produtos-do-cliente-de-forma-que-haja-um-botão-de-carrinho-que-redirecionará-para-a-tela-de-checkout-caso-itens-sejam-adicionados)
-    - [`04customer_checkout.test`](#04customer_checkouttest)
-      - [17 - Crie uma tela de checkout do cliente com elementos com os data-testids disponíveis no protótipo](#17---crie-uma-tela-de-checkout-do-cliente-com-elementos-com-os-data-testids-disponíveis-no-protótipo)
-      - [18 - Desenvolva a tela de checkout do cliente de forma a possuir os dados corretos do carrinho e preço total](#18---desenvolva-a-tela-de-checkout-do-cliente-de-forma-a-possuir-os-dados-corretos-do-carrinho-e-preço-total)
-      - [19 - Desenvolva a tela de checkout do cliente de forma que seja possível remover itens do carrinho](#19---desenvolva-a-tela-de-checkout-do-cliente-de-forma-que-seja-possível-remover-itens-do-carrinho)
-      - [20 - Desenvolva a tela de checkout do cliente de forma a nos redirecionar para a tela de detalhes do pedido feito após a finalização do mesmo](#20---desenvolva-a-tela-de-checkout-do-cliente-de-forma-a-nos-redirecionar-para-a-tela-de-detalhes-do-pedido-feito-após-a-finalização-do-mesmo)
-      - [21 - Desenvolva a tela de checkout do cliente de forma a gerar uma nova venda na tabela sales, assim como relações em salesProducts ao finalizar o pedido](#21---desenvolva-a-tela-de-checkout-do-cliente-de-forma-a-gerar-uma-nova-venda-na-tabela-sales-assim-como-relações-em-salesproducts-ao-finalizar-o-pedido)
-    - [`05customer_orders.test`](#05customer_orderstest)
-      - [22 - Crie uma tela de pedidos do cliente com elementos a partir dos data-testids disponíveis no protótipo](#22---crie-uma-tela-de-pedidos-do-cliente-com-elementos-a-partir-dos-data-testids-disponíveis-no-protótipo)
-      - [23 - Desenvolva a tela de pedidos do cliente de forma a conter a lista de pedidos do mesmo com os dados corretos](#23---desenvolva-a-tela-de-pedidos-do-cliente-de-forma-a-conter-a-lista-de-pedidos-do-mesmo-com-os-dados-corretos)
-      - [24 - Desenvolva a tela de pedidos do cliente de forma a dar acesso à tela de detalhes de um pedido ao clicar no card do mesmo](#24---desenvolva-a-tela-de-pedidos-do-cliente-de-forma-a-dar-acesso-à-tela-de-detalhes-de-um-pedido-ao-clicar-no-card-do-mesmo)
-    - [`06customer_order_details.test`](#06customer_order_detailstest)
-      - [25 - Crie uma tela de detalhes do pedido do cliente com elementos a partir dos data-testids disponíveis no protótipo](#25---crie-uma-tela-de-detalhes-do-pedido-do-cliente-com-elementos-a-partir-dos-data-testids-disponíveis-no-protótipo)
-      - [26 - Desenvolva a tela de detalhes do pedido do cliente de forma a possuir os dados corretos da venda](#26---desenvolva-a-tela-de-detalhes-do-pedido-do-cliente-de-forma-a-possuir-os-dados-corretos-da-venda)
-  - [`Fluxo da Pessoa Vendedora`](#fluxo-da-pessoa-vendedora)
-    - [`07seller_orders.test`](#07seller_orderstest)
-      - [27 - Crie uma tela de pedidos da pessoa vendedora com elementos a partir dos data-testids disponíveis no protótipo](#27---crie-uma-tela-de-pedidos-da-pessoa-vendedora-com-elementos-a-partir-dos-data-testids-disponíveis-no-protótipo)
-      - [28 - Desenvolva a tela de pedidos da pessoa vendedora de forma a conter a lista de pedidos do mesmo com os dados corretos](#28---desenvolva-a-tela-de-pedidos-da-pessoa-vendedora-de-forma-a-conter-a-lista-de-pedidos-do-mesmo-com-os-dados-corretos)
-      - [29 - Desenvolva a tela de pedidos da pessoa vendedora de forma a dar acesso à tela de detalhes de um pedido ao clicar no card do mesmo](#29---desenvolva-a-tela-de-pedidos-da-pessoa-vendedora-de-forma-a-dar-acesso-à-tela-de-detalhes-de-um-pedido-ao-clicar-no-card-do-mesmo)
-    - [`08seller_order_details.test`](#08seller_order_detailstest)
-      - [30 - Crie uma tela de detalhes do pedido da pessoa vendedora com elementos a partir dos data-testids disponíveis no protótipo](#30---crie-uma-tela-de-detalhes-do-pedido-da-pessoa-vendedora-com-elementos-a-partir-dos-data-testids-disponíveis-no-protótipo)
-      - [31 - Desenvolva a tela de detalhes do pedido da pessoa vendedora de forma a possuir os dados corretos da venda](#31---desenvolva-a-tela-de-detalhes-do-pedido-da-pessoa-vendedora-de-forma-a-possuir-os-dados-corretos-da-venda)
-  - [`Validação do Status do Pedido`](#validação-do-status-do-pedido)
-      - [32 - Desenvolva a tela de detalhes do pedido da pessoa vendedora de forma a ser capaz de alterar o status do pedido](#32---desenvolva-a-tela-de-detalhes-do-pedido-da-pessoa-vendedora-de-forma-a-ser-capaz-de-alterar-o-status-do-pedido)
-    - [`09customer_seller_status_sync.test`](#09customer_seller_status_synctest)
-      - [33 - Garanta que o status do pedido atualizado na tela de detalhes do pedido da pessoa vendedora seja refletido na tela de detalhes do pedido do cliente após atualização das páginas](#33---garanta-que-o-status-do-pedido-atualizado-na-tela-de-detalhes-do-pedido-da-pessoa-vendedora-seja-refletido-na-tela-de-detalhes-do-pedido-do-cliente-após-atualização-das-páginas)
-      - [34 - Garanta que o status do pedido atualizado na tela de detalhes do pedido da pessoa vendedora seja refletido na tela de lista de pedidos do cliente após atualização das páginas](#34---garanta-que-o-status-do-pedido-atualizado-na-tela-de-detalhes-do-pedido-da-pessoa-vendedora-seja-refletido-na-tela-de-lista-de-pedidos-do-cliente-após-atualização-das-páginas)
-      - [35 - Garanta que o status do pedido atualizado na tela de detalhes do pedido do cliente seja refletido na tela de lista de pedidos da pessoa vendedora após atualização das páginas](#35---garanta-que-o-status-do-pedido-atualizado-na-tela-de-detalhes-do-pedido-do-cliente-seja-refletido-na-tela-de-lista-de-pedidos-da-pessoa-vendedora-após-atualização-das-páginas)
-    - [`10customer_seller_socket_status_sync.test`](#10customer_seller_socket_status_synctest)
-      - [36 - Desenvolva a tela de detalhes do pedido da pessoa vendedora de forma a interagir em tempo real com a tela de detalhes do pedido do cliente](#36---desenvolva-a-tela-de-detalhes-do-pedido-da-pessoa-vendedora-de-forma-a-interagir-em-tempo-real-com-a-tela-de-detalhes-do-pedido-do-cliente)
-      - [37 - Desenvolva a tela de detalhes do pedido da pessoa vendedora de forma a interagir em tempo real com a tela de lista de pedidos do cliente](#37---desenvolva-a-tela-de-detalhes-do-pedido-da-pessoa-vendedora-de-forma-a-interagir-em-tempo-real-com-a-tela-de-lista-de-pedidos-do-cliente)
-      - [38 - Desenvolva a tela de detalhes do pedido do cliente de forma a interagir em tempo real com a tela de lista de pedidos da pessoa vendedora](#38---desenvolva-a-tela-de-detalhes-do-pedido-do-cliente-de-forma-a-interagir-em-tempo-real-com-a-tela-de-lista-de-pedidos-da-pessoa-vendedora)
-  - [`Fluxo da Pessoa Administradora`](#fluxo-da-pessoa-administradora)
-    - [`11admin_manage_users.test`](#11admin_manage_userstest)
-      - [39 - Crie uma tela de pessoa administradora com elementos a partir dos data-testids disponíveis no protótipo](#39---crie-uma-tela-de-pessoa-administradora-com-elementos-a-partir-dos-data-testids-disponíveis-no-protótipo)
-      - [40 - Desenvolva a tela da pessoa administradora de forma a validar o formulário de cadastro](#40---desenvolva-a-tela-da-pessoa-administradora-de-forma-a-validar-o-formulário-de-cadastro)
-      - [41 - Desenvolva a tela da pessoa administradora de forma que seja possível cadastrar pessoas usuárias válidas](#41---desenvolva-a-tela-da-pessoa-administradora-de-forma-que-seja-possível-cadastrar-pessoas-usuárias-válidas)
-      - [42 - Desenvolva a tela da pessoa administradora de forma que ela impossibilite o cadastro de pessoas usuárias já existentes](#42---desenvolva-a-tela-da-pessoa-administradora-de-forma-que-ela-impossibilite-o-cadastro-de-pessoas-usuárias-já-existentes)
-      - [43 - (`Bônus`) Desenvolva a tela da pessoa administradora de forma que haja uma tabela de pessoas usuárias cadastradas](#43---bônus-desenvolva-a-tela-da-pessoa-administradora-de-forma-que-haja-uma-tabela-de-pessoas-usuárias-cadastradas)
-      - [44 - (`Bônus`) Desenvolva a tela da pessoa administradora de forma que seja possível deletar pessoas usuárias na tabela](#44---bônus-desenvolva-a-tela-da-pessoa-administradora-de-forma-que-seja-possível-deletar-pessoas-usuárias-na-tabela)
-  - [`Cobertura de Testes`](#cobertura-de-testes)
-    - [`12coverage_tests.test`](#12coverage_teststest)
-      - [45 - Crie testes que cubram no mínimo 30 por cento dos arquivos do front-end e back-end em src com um mínimo de 75 linhas cobertas em cada](#45---crie-testes-que-cubram-no-mínimo-30-por-cento-dos-arquivos-do-front-end-e-back-end-em-src-com-um-mínimo-de-75-linhas-cobertas-em-cada)
-      - [46 - (`Bônus`) Crie testes que cubram no mínimo 60 por cento dos arquivos do front-end e back-end em src com um mínimo de 150 linhas cobertas em cada](#46---bônus-crie-testes-que-cubram-no-mínimo-60-por-cento-dos-arquivos-do-front-end-e-back-end-em-src-com-um-mínimo-de-150-linhas-cobertas-em-cada)
-      - [47 - (`Bônus`) Crie testes que cubram no mínimo 90 por cento dos arquivos do front-end e back-end em src com um mínimo de 225 linhas cobertas em cada](#47---bônus-crie-testes-que-cubram-no-mínimo-90-por-cento-dos-arquivos-do-front-end-e-back-end-em-src-com-um-mínimo-de-225-linhas-cobertas-em-cada)
-  - [`Extra não avaliativo`](#extra-não-avaliativo)
-    - [Realizar o deploy do projeto back-end e front-end](#realizar-o-deploy-do-projeto-back-end-e-front-end)
-    - [Qual poderia ser o próximo passo?](#qual-poderia-ser-o-próximo-passo)
-- [Depois de terminar o desenvolvimento](#depois-de-terminar-o-desenvolvimento)
-- [Revisando um pull request](#revisando-um-pull-request)
-- [Avisos finais](#avisos-finais)
+**Tecnologias utilizadas**
+
+- <a href="https://trello.com/"><img src="https://trackingtime.co/wp-content/themes/trackingtime-v4/img/temp/logos/trello.png" title="Trello" height="30" align="center"/>  - Trello</a>
+
+**Front-end**
+- <a href="https://www.w3.org/html/"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original-wordmark.svg" title="HTML5" align="center" height="35"/> - HTML</a> 
+- <a href="https://www.w3schools.com/css/"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg" title="CCS3" align="center" height="35"/> - CSS</a>
+- <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" title="JavaScript" align="center" height="30"/> - JavaScript</a>
+- <a href="https://reactjs.org/"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg" title="React" align="center" height="35"/> - React</a>
+- <a href="https://reactrouter.com/docs/en/v6/getting-started/overview"><img src="https://reacttraining.com/images/blog/reach-react-router-future.png" title="React Router" align="center" height="30"/> - React Router</a>
+
+**Back-end**
+
+*Projeto desenvolvido em grupo com Adryan Rosa, Daniel Batista, Marcelo Pelegrino e Matheus Tkaczyk*
 
 ---
+
+### Rotas disponíveis na aplicação:
+
+* Tela de login: `/`;
+* Tela principal de receitas de comidas: `/comidas`;
+* Tela principal de receitas de bebidas: `/bebidas`;
+* Tela de detalhes de uma receita de comida: `/comidas/{id-da-receita}`;
+* Tela de detalhes de uma receita de bebida: `/bebidas/{id-da-receita}`;
+* Tela de receita em processo de comida: `/comidas/{id-da-receita}/in-progress`;
+* Tela de receita em processo de bebida: `/bebidas/{id-da-receita}/in-progress`;
+* Tela de explorar: `/explorar`;
+* Tela de explorar comidas: `/explorar/comidas`;
+* Tela de explorar bebidas: `/explorar/bebidas`;
+* Tela de explorar comidas por ingrediente: `/explorar/comidas/ingredientes`;
+* Tela de explorar bebidas por ingrediente: `/explorar/bebidas/ingredientes`;
+* Tela de explorar comidas por local de origem: `/explorar/comidas/area`;
+* Tela de perfil: `/perfil`;
+* Tela de receitas feitas: `/receitas-feitas`;
+* Tela de receitas favoritas: `/receitas-favoritas`.
+
+### Lista de requisitos propostos pela Trybe:
+
+#### Obrigatórios
 
 # Contexto
 
-A distribuidora de cervejas da dona Tereza está se informatizando! 🚀 Seu negócio, antes focado em um local específico da cidade, passou a receber uma quantidade massiva de encomendas de outros pontos, expandindo sua atuação, sobretudo via delivery. Isso tudo graças ao excelente preço das bebidas e atendimento da equipe de vendas.
-
-Agora a distribuidora possui alguns pontos de venda na cidade para agilizar no atendimento dessas áreas. Cada ponto de venda, por sua vez, possui uma pessoa vendedora responsável.
-
-Como seu antigo sistema, que era um conjunto de planilhas, já não atende a necessidade do negócio, pois gera muita manutenção, dona Tereza procurou a **sua equipe de pessoas desenvolvedoras** com uma ideia de aplicativo que pudesse agilizar a vida de sua equipe e das pessoas que compram seus produtos. O aplicativo precisa:
+O aplicativo precisa:
 
 - Ter acesso via login: tanto clientes como pessoas vendedoras, assim como a própria dona Tereza, que administra o sistema, devem ter acesso ao aplicativo via login, porém para funções diferentes: (1) A pessoa cliente, que compra da lista de produtos; (2) A pessoa vendedora, que aprova, prepara e entrega; (3) A pessoa administradora, que gerencia quem usa o aplicativo;
 - Fazer a comunicação entre clientes e pessoas vendedoras: a pessoa cliente faz o pedido via "carrinho de compras" e a pessoa vendedora aprova, prepara e envia esse pedido. Quando o produto é recebido por quem comprou, essa pessoa marca o pedido como "recebido". Ambos devem possuir detalhes sobre seus pedidos;
@@ -129,18 +77,6 @@ A ideia da sua equipe já pressupõe alguma escalabilidade, dado que foram estab
 Agora é mãos à obra! Vamos começar?
 
 ---
-
-# Habilidades
-
-Nesse projeto, você deverá ser capaz de:
-
-- Manter aderência do código à especificação. Seu programa deve se comportar como especificado no repositório, no [protótipo](https://www.figma.com/file/cNKu41RhnPIgNqrbMTzmUI/Delivery-App-new-trybeer?node-id=0%3A1) e no [Diagrama de ER](./assets/readme/eer.png);
-- Manter a organização do seu código e a arquitetura geral da aplicação (tanto da API quando do front-end);
-- Manter aderência ao padrão REST na API;
-- Respeitar a estrutura do banco de dados. Sua implementação não deve adicionar ou remover tabelas, campos ou relacionamentos e sua API deve estar preparada para aproveitar essa estrutura por completo;
-- Manter uma cobertura de testes. Seu código deve ser testável e possuir uma suíte de testes unitários e/ou de integração robusta e com alta cobertura.
-- Implementar a funcionalidade de comunicação em tempo real, utilizando o socket.io.
-- Manter aderência aos princípios SOLID;
 
 # Entregáveis
 
