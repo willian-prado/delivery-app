@@ -1,10 +1,10 @@
 ## Projeto Delivery App
 
-> Décimo terceiro projeto do módulo de Back-end do curso de desenvolvimento web da Trybe.
+> Décimo terceiro projeto do módulo de Back-end do curso de desenvolvimento web da [Trybe](https://www.betrybe.com/).
 
 **Contexto**
 
-Este é o nosso último projeto em grupo no curso e ele também finaliza o módulo de Back-end. Pela primeira vez devemos construir uma aplicação full-stack, colocando em prática tudo o que aprendemos nos módulos de Front-end e Back-end. No front-end dessa aplicação, trabalhamos principalmente com React, Redux e React Router. Já no back-end, foi utilizado Node e Express para construir a API e o ORM Sequelize para gestão do banco de dados MySQL. Inicialmente, desenvolvemos em grupo a configuração do Sequelize e estruturação de pastas e rotas da aplicação. Posteriormente, uma parte do grupo se concentrou nos requisitos do Front-end e outra parte nos de Back-end que passaram a ser feitos em paralelo. O desenvolvimento da aplicação foi acompanhado por um quadro Kanban no aplicativo Trello, enquanto o aplicativo Discord foi utilizado para a troca de mensagens e *pair programming*.
+Este é o nosso último projeto em grupo e ele também finaliza o módulo de Back-end. Pela primeira vez devemos construir uma aplicação full-stack, colocando em prática tudo o que aprendemos nos módulos de Front-end e Back-end. No front-end dessa aplicação, trabalhamos principalmente com React, Redux e React Router. Já no back-end, foi utilizado Node e Express para construir a API e o ORM Sequelize para gestão do banco de dados MySQL. Inicialmente, desenvolvemos em grupo a configuração do Sequelize e estruturação de pastas e rotas da aplicação. Posteriormente, uma parte do grupo se concentrou nos requisitos do Front-end e outra parte nos de Back-end que passaram a ser feitos em paralelo. O desenvolvimento da aplicação foi acompanhado por um quadro Kanban no aplicativo Trello, enquanto o aplicativo Discord foi utilizado para a troca de mensagens e *pair programming*.
 
 **Objetivo do projeto**
 
@@ -18,7 +18,7 @@ Para auxiliar no desenvolvimento, estão disponíveis um [protótipo](https://ww
 
 ![Diagrama de ER](./assets/readme/eer.png)
 
-**Principais habilidades desenvolvidas nesse trabalho:**
+**Principais habilidades desenvolvidas nesse trabalho**
 
   - Manter aderência do código à especificação. O programa deve se comportar como especificado no repositório, no [protótipo](https://www.figma.com/file/cNKu41RhnPIgNqrbMTzmUI/Delivery-App-new-trybeer?node-id=0%3A1) e no [Diagrama de ER](./assets/readme/eer.png);
   - Manter a organização do código e arquitetura geral da aplicação (tanto da API quando do front-end);
@@ -49,7 +49,7 @@ Para auxiliar no desenvolvimento, estão disponíveis um [protótipo](https://ww
 - <a href="https://jwt.io/introduction"><img src="https://vegibit.com/wp-content/uploads/2018/07/JSON-Web-Token-Authentication-With-Node.png" title= "JWT" align="center" height="30"/> - JWT</a>
 - <a href="https://sequelize.org/v6/"><img src="https://seeklogo.com/images/S/sequelize-logo-9A5075DB9F-seeklogo.com.png" title= "Sequelize" align="center" height="30"/> - Sequelize</a>
 
-*Projeto desenvolvido em grupo com Adryan Rosa, Daniel Batista, Marcelo Pelegrino e Matheus Tkaczyk*
+*Projeto desenvolvido em grupo com [Adryan Rosa](https://github.com/adryanrosa), [Daniel Batista](https://github.com/danielbped), [Marcelo Pelegrino](https://github.com/MarceloPelegrino) e [Matheus Tkaczyk](https://github.com/matheustkaczyk)*.
 
 ---
 
@@ -560,3 +560,7 @@ Se seu projeto estiver concluído, considere a expansão que ele pode passar ao 
 É super importante que tenhamos seguido todos os princípios e boas práticas de programação (como `SOLID`, por exemplo), tal como uma boa modelagem do banco de dados que torne possível gerar **escala**.
 
 Evidentemente, nada fica ideal num primeiro momento, mas quanto mais conseguirmos trabalhar no nosso projeto pensando a manutenção dele no longo prazo, mais fácil fica de programarmos coisas novas partindo do nosso código legado, por isso é importante sempre revisar nosso trabalho!
+
+---
+
+[Ir para a lista de projetos](https://github.com/willian-prado/trybe-records)
