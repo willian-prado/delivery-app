@@ -28,21 +28,21 @@ Para auxiliar no desenvolvimento, estão disponíveis um [protótipo](https://ww
 
 **Tecnologias utilizadas**
 
-**Comunicação e Organização**
+*Comunicação e Organização*
 
 - <a href="https://trello.com/"><img src="https://trackingtime.co/wp-content/themes/trackingtime-v4/img/temp/logos/trello.png" title="Trello" height="30" align="center"/>  - Trello</a>
 - <a href="https://discord.com/"><img src="https://www.svgrepo.com/show/331368/discord-v2.svg" title="Discord" height="30" align="center"/> - Discord</a>
 
-**Linguagem**
+*Linguagem*
 - <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" title="JavaScript" align="center" height="30"/> - JavaScript</a>
 
-**Front-end**
+*Front-end*
 - <a href="https://www.w3.org/html/"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original-wordmark.svg" title="HTML5" align="center" height="35"/> - HTML</a> 
 - <a href="https://www.w3schools.com/css/"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg" title="CCS3" align="center" height="35"/> - CSS</a>
 - <a href="https://reactjs.org/"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg" title="React" align="center" height="35"/> - React</a>
 - <a href="https://reactrouter.com/docs/en/v6/getting-started/overview"><img src="https://reacttraining.com/images/blog/reach-react-router-future.png" title="React Router" align="center" height="30"/> - React Router</a>
 
-**Back-end**
+*Back-end*
 - <a href="https://nodejs.org"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original.svg" title="Node.js" align="center" height="35"/> - Node.js</a>
 - <a href="https://expressjs.com"><img src="https://images.tute.io/tute/topic/express-js.png" title= "Express" align="center" height="35"/> - Express</a>
 - <a href="https://www.mysql.com/"><img src="https://icon-library.com/images/mysql-icon/mysql-icon-3.jpg" title="MySQL" align="center" height="30"/> - MySQL</a>
