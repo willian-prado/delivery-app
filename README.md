@@ -1,6 +1,6 @@
 ## Projeto Delivery App
 
-> Décimo terceiro projeto do módulo de Back-end do curso de desenvolvimento web da [Trybe](https://www.betrybe.com/).
+> Décimo terceiro projeto do módulo de Back-end do curso de desenvolvimento web da [Trybe](https://www.betrybe.com/)
 
 **Contexto**
 
